@@ -4,11 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class AlliedAI : MonoBehaviour
-{
+{   
+    public Transform target;
+    public float range;
+    public float hitRate;
+    
     [SerializeField] private Animator model;
-    private Transform target;
     private float turnSpeed;
-    private bool swapTarget;
+    private float hitCD;
 
     Vector3 difference;
     Quaternion rotGoal;
@@ -17,39 +20,71 @@ public class AlliedAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        //target = enemies[0].transform;
+        //model.SetTrigger("triggerRun");
+        turnSpeed = 0.05f;
+        hitRate = 5f;
+        hitCD = 0f;
+        range = 7f;
+        InvokeRepeating("UpdateTarget", 0f, 0.25f);
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Skips movement and attacks if there is no target
+        if(target == null)
+        {
+            return;
+        }
+
+        // Rotates towards the target
         difference = target.position - transform.position;
         direction = difference.normalized;
         rotGoal = Quaternion.LookRotation(direction);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotGoal, turnSpeed);
+
+        // Unit attempts to hit nearest unit at hit rate
+        if (hitCD <= 0f && target != null)
+        {
+            model.SetTrigger("triggerHit");
+            hitCD = 0.25f / hitRate;
+        }
+
+        hitCD -= Time.deltaTime;
     }
 
+    // Checks for the nearest enemy target
     void UpdateTarget()
     {
-        /*
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        
-        if(swapTarget == true)
+        float shortest = Mathf.Infinity;
+        GameObject nearest = null;
+
+        foreach (GameObject enemy in enemies)
         {
-            target = enemies;
-            swapTarget = false;
+            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+
+            if (distanceToEnemy < shortest)
+            {
+                shortest = distanceToEnemy;
+                nearest = enemy;
+            }
         }
-        */
+
+        if (nearest != null && shortest <= range)
+        {
+            target = nearest.transform;
+        }
+        else
+        {
+            target = null;
+        }
     }
 
-    private void OnTriggerEnter(Collider other)
+    // Draws range of unit when selected
+    void OnDrawGizmosSelected()
     {
-        /*
-        if(other.tag == "Enemy")
-        {
-            swapTarget = true;
-        }
-        */
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, range);
     }
 }

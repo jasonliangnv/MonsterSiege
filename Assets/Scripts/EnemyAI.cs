@@ -5,31 +5,28 @@ using UnityEngine.SceneManagement;
 
 public class EnemyAI : MonoBehaviour
 {
-    public Transform target1;
-    public Transform target2;
-    public Transform target3;
+    public Transform target;
     public float tempo;
 
     [SerializeField] private Animator model;
+    private int index;
     private float turnSpeed;
     private bool waveStarted;
     private bool walking;
-    private bool swapTarget;
 
     Vector3 difference;
-    Transform activeTarget;
     Quaternion rotGoal;
     Vector3 direction;
 
     // Start is called before the first frame update
     void Start()
     {
-        turnSpeed = 0.1f;
+        index = 0;
+        target = Waypoints.points[0];
+        turnSpeed = 0.05f;
         waveStarted = false;
         walking = false;
-        swapTarget = false;
         tempo = tempo / 60f;
-        activeTarget = target1;
     }
 
     // Update is called once per frame
@@ -54,64 +51,29 @@ public class EnemyAI : MonoBehaviour
             }
         }
 
-        // If the enemy unit is not at the first turn, keep walking towards the target
-        if(activeTarget == target1)
+        difference = target.position - transform.position;
+        direction = difference.normalized;
+        rotGoal = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotGoal, turnSpeed);
+        transform.Translate(direction * tempo * Time.deltaTime, Space.World);
+
+        if(Vector3.Distance(transform.position, target.position) <= 0.4f)
         {
-                if(swapTarget == false)
-                {
-                    difference = activeTarget.position - transform.position;
-                    direction = difference.normalized;
-                    rotGoal = Quaternion.LookRotation(direction);
-                    transform.rotation = Quaternion.Slerp(transform.rotation, rotGoal, turnSpeed);
-                    transform.position += new Vector3(tempo * Time.deltaTime, 0, 0);                    
-                }
-                else
-                {
-                    activeTarget = target2;
-                    swapTarget = false;
-                }
-        }
-        // Else if the enemy unit is not at the second turn, keep walking towards the target
-        else if(activeTarget == target2)
-        {
-            if(swapTarget == false)
-            {
-                difference = activeTarget.position - transform.position;
-                direction = difference.normalized;
-                rotGoal = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.Slerp(transform.rotation, rotGoal, turnSpeed);
-                transform.position += new Vector3(0, 0, tempo * Time.deltaTime);                      
-            }
-            else
-            {
-                activeTarget = target3;
-                swapTarget = false;
-            }
-        }
-        // Else if the enemy unit is not at the player loss zone, keep walking towards the target
-        else if(activeTarget == target3)
-        {
-            if(swapTarget == false)
-            {
-                difference = activeTarget.position - transform.position;
-                direction = difference.normalized;
-                rotGoal = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.Slerp(transform.rotation, rotGoal, turnSpeed);
-                transform.position += new Vector3(tempo * Time.deltaTime, 0, 0);                  
-            }
-            else
-            {
-                // Place player loses health here
-            }
-        }
+            GetNextWaypoint();
+        }       
+
     }
 
-
-    private void OnTriggerEnter(Collider other)
+    void GetNextWaypoint()
     {
-        if(other.tag == "EnemyPath")
+        if(index >= Waypoints.points.Length - 1)
         {
-            swapTarget = true;
+            Destroy(gameObject);
+            // Reduce player HP here
+            return;
         }
+
+        index++;
+        target = Waypoints.points[index];
     }
 }
