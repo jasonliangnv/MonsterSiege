@@ -76,7 +76,7 @@ public class EnemyAI : MonoBehaviour
             direction = difference.normalized;
             rotGoal = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotGoal, turnSpeed);
-            transform.Translate(direction * tempo/2 * Time.deltaTime, Space.World);
+            transform.Translate(direction * tempo/5 * Time.deltaTime, Space.World);
 
             // Plays death animation if dead
             model.SetTrigger("triggerDeath");
@@ -112,6 +112,12 @@ public class EnemyAI : MonoBehaviour
     {
         if(index >= Waypoints.points.Length - 1)
         {
+            // Subtracts one from the enemy count
+            GameObject waveController = GameObject.Find("GameManager");
+            WaveSpawner levelTracker = waveController.GetComponent<WaveSpawner>();
+
+            levelTracker.EnemiesAlive--;
+
             Destroy(gameObject);
 
             PlayerStats.health--;            
