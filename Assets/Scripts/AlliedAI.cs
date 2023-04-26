@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class AlliedAI : MonoBehaviour
@@ -8,7 +9,7 @@ public class AlliedAI : MonoBehaviour
     public Transform target;
     public float range;
     public float damage;
-    
+
     [SerializeField] private Animator model;
     private float turnSpeed = 0.05f;
     private float timer = 0f;
@@ -44,6 +45,11 @@ public class AlliedAI : MonoBehaviour
         if(target.GetComponent<EnemyAI>().IsDead() == false && timer == 0)
         {
             model.SetTrigger("triggerHit");
+            
+            GameObject hitAudio = GameObject.Find("HitSound");
+            AudioSource hit = hitAudio.GetComponent<AudioSource>();
+            
+            hit.Play();
             target.GetComponent<EnemyAI>().TakeDamage(damage);
 
             timer += Time.deltaTime;

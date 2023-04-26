@@ -1,23 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
-    public static int health;
-    public int startHealth;
+    public int health = 10;
+    public int money;
 
-    public static int money;
-    public int startMoney;
+    public TextMeshProUGUI HPText;
+    public GameObject loseTextObject;
+    public AudioSource loseAudio;
+    public AudioSource backgroundAudio;
 
-    private void Start()
+    private bool endingLevel;
+
+    void Start()
     {
-        money = startMoney;
-        health = startHealth;
+        endingLevel = false;
     }
 
-    public void reduceHealth(int damage)
+    void Update()
     {
-        health = -damage;
+        // Prints HP to the UI
+        HPText.text = string.Format("{00}", health);
+
+        // If player reaches 0 hp they lose the level
+        if(health == 0 && endingLevel == false)
+        {
+            endingLevel = true;
+            loseAudio.Play();
+            backgroundAudio.Stop();
+            loseTextObject.SetActive(true);
+            Invoke("PlayNextLevel", 5);            
+        }
+    }
+
+    // Plays next level
+    void PlayNextLevel()
+    {
+        SceneManager.LoadScene(0);
     }
 }

@@ -89,6 +89,12 @@ public class EnemyAI : MonoBehaviour
 
             if(timer >= delay)
             {
+                // Subtracts one from the enemy count
+                GameObject waveController = GameObject.Find("GameManager");
+                WaveSpawner levelTracker = waveController.GetComponent<WaveSpawner>();
+
+                levelTracker.EnemiesAlive--;
+
                 Destroy(gameObject);
             }
         }
@@ -107,7 +113,13 @@ public class EnemyAI : MonoBehaviour
         if(index >= Waypoints.points.Length - 1)
         {
             Destroy(gameObject);
-            EndPath();
+
+            // Subtracts one from player HP
+            GameObject player = GameObject.Find("PlayerStats");
+            PlayerStats stats= player.GetComponent<PlayerStats>();
+
+            stats.health--;            
+
             return;
         }
 
@@ -125,7 +137,6 @@ public class EnemyAI : MonoBehaviour
             dead = true;
             gameObject.tag = "Untagged";
             walking = false;
-            WaveSpawner.EnemiesAlive--;
         }
     }
 
@@ -140,11 +151,5 @@ public class EnemyAI : MonoBehaviour
         {
             return false;
         }
-    }
-
-    void EndPath()
-    {
-        WaveSpawner.EnemiesAlive--;
-        PlayerStats.health--;
     }
 }
