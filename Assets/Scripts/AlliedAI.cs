@@ -9,7 +9,6 @@ public class AlliedAI : MonoBehaviour
     public Transform target;
     public float range;
     public float damage;
-    public AudioSource hitAudio;
 
     [SerializeField] private Animator model;
     private float turnSpeed = 0.05f;
@@ -46,7 +45,11 @@ public class AlliedAI : MonoBehaviour
         if(target.GetComponent<EnemyAI>().IsDead() == false && timer == 0)
         {
             model.SetTrigger("triggerHit");
-            hitAudio.Play();
+            
+            GameObject hitAudio = GameObject.Find("HitSound");
+            AudioSource hit = hitAudio.GetComponent<AudioSource>();
+            
+            hit.Play();
             target.GetComponent<EnemyAI>().TakeDamage(damage);
 
             timer += Time.deltaTime;
