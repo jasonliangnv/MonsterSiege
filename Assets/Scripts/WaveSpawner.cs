@@ -25,9 +25,12 @@ public class WaveSpawner : MonoBehaviour
     private int waveNumber = 0;
     void Update()
     {
-        Wave upcomingWave = waves[waveNumber];
-        waveUnitIcon.sprite = upcomingWave.icon;
-        waveUnitNumber.text = upcomingWave.count.ToString();
+        if(waves[waveNumber] != null)
+        {
+            Wave upcomingWave = waves[waveNumber];
+            waveUnitIcon.sprite = upcomingWave.icon;
+            waveUnitNumber.text = upcomingWave.count.ToString();
+        }
 
         waveCountText.text = "Wave: " + (waveNumber + 1).ToString();
         if(countdown <= 0f)
