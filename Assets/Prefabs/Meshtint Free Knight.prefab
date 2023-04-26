@@ -239,7 +239,7 @@ MonoBehaviour:
   target: {fileID: 0}
   range: 6
   damage: 15
-  hitAudio: {fileID: -4054201336509757735, guid: fd089d57bb44d724282d78f12bf13187, type: 3}
+  cost: 5
   model: {fileID: 95382778294392932}
 --- !u!1 &1087546517206048
 GameObject:
