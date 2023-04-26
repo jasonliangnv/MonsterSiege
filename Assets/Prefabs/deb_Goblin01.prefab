@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  tempo: 300
+  tempo: 200
   model: {fileID: 8272943599214529815}
 --- !u!1 &8272943599224061575
 GameObject:

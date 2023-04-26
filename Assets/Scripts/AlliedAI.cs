@@ -46,6 +46,7 @@ public class AlliedAI : MonoBehaviour
         // Unit attempts to hit nearest unit at hit rate
         if (hitCD <= 0f && target != null)
         {
+            // Add damage to enemy unit
             model.SetTrigger("triggerHit");
             hitCD = 0.25f / hitRate;
         }
