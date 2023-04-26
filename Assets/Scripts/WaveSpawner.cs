@@ -33,6 +33,12 @@ public class WaveSpawner : MonoBehaviour
         }
 
         waveCountText.text = "Wave: " + (waveNumber + 1).ToString();
+
+        if(EnemiesAlive > 0)
+        {
+            return;
+        }
+
         if(countdown <= 0f)
         {
             StartCoroutine(SpawnWave());
@@ -64,7 +70,6 @@ public class WaveSpawner : MonoBehaviour
     void SpawnEnemy(GameObject enemy)
     {
         Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
-        //Need to add EnemiesAlive-- to enemy scripts
-        //EnemiesAlive++;
+        EnemiesAlive++;
     }
 }

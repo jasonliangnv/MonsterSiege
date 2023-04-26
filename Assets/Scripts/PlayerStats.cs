@@ -4,6 +4,20 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    public int health;
-    public int money;
+    public static int health;
+    public int startHealth;
+
+    public static int money;
+    public int startMoney;
+
+    private void Start()
+    {
+        money = startMoney;
+        health = startHealth;
+    }
+
+    public void reduceHealth(int damage)
+    {
+        health = -damage;
+    }
 }

@@ -107,7 +107,7 @@ public class EnemyAI : MonoBehaviour
         if(index >= Waypoints.points.Length - 1)
         {
             Destroy(gameObject);
-            // Reduce player HP here
+            EndPath();
             return;
         }
 
@@ -125,6 +125,7 @@ public class EnemyAI : MonoBehaviour
             dead = true;
             gameObject.tag = "Untagged";
             walking = false;
+            WaveSpawner.EnemiesAlive--;
         }
     }
 
@@ -139,5 +140,11 @@ public class EnemyAI : MonoBehaviour
         {
             return false;
         }
+    }
+
+    void EndPath()
+    {
+        WaveSpawner.EnemiesAlive--;
+        PlayerStats.health--;
     }
 }
