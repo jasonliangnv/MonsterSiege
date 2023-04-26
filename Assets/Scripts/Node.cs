@@ -22,11 +22,21 @@ public class Node : MonoBehaviour
     {
         if(unit != null)
         {
-            Debug.Log("Can't Build Here");
+            return;
         }
 
         GameObject unitToBuild = BuildManager.instance.GetTurretToBuild();
-        unit = Instantiate(unitToBuild, transform.position, transform.rotation);
+        int unitCost = unitToBuild.GetComponent<AlliedAI>().cost;
+
+        if (unitCost <= PlayerStats.money)
+        {
+            unit = Instantiate(unitToBuild, transform.position, transform.rotation);
+            PlayerStats.money -= unitCost;
+        }
+        else
+        {
+            Debug.Log("Not Enough Money");
+        }
     }
 
     void OnMouseEnter()

@@ -6,10 +6,15 @@ using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
-    public int health = 10;
-    public int money;
+    public static int health = 10;
+    public static int money = 50;
+
+    public int startingHealth;
+    public int startingMoney;
 
     public TextMeshProUGUI HPText;
+    public TextMeshProUGUI MoneyText;
+
     public GameObject loseTextObject;
     public AudioSource loseAudio;
     public AudioSource backgroundAudio;
@@ -18,6 +23,9 @@ public class PlayerStats : MonoBehaviour
 
     void Start()
     {
+        health = startingHealth;
+        money = startingMoney;
+
         endingLevel = false;
     }
 
@@ -25,9 +33,11 @@ public class PlayerStats : MonoBehaviour
     {
         // Prints HP to the UI
         HPText.text = string.Format("{00}", health);
+        MoneyText.text = string.Format("{00}", money);
+
 
         // If player reaches 0 hp they lose the level
-        if(health == 0 && endingLevel == false)
+        if (health == 0 && endingLevel == false)
         {
             endingLevel = true;
             loseAudio.Play();

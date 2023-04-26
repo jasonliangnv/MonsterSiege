@@ -114,11 +114,7 @@ public class EnemyAI : MonoBehaviour
         {
             Destroy(gameObject);
 
-            // Subtracts one from player HP
-            GameObject player = GameObject.Find("PlayerStats");
-            PlayerStats stats= player.GetComponent<PlayerStats>();
-
-            stats.health--;            
+            PlayerStats.health--;            
 
             return;
         }
