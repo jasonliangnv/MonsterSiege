@@ -2,17 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class EnemyAI : MonoBehaviour
 {
     public Transform target;
     public float tempo;
 
+    // HP BAR DISPLAY WORK IN PROGRESS
+    //[HideInInspector]
+    
+    public float health;
+
+    //[Header("HP Bar")]
+    //public Image healthBar;
+
     [SerializeField] private Animator model;
-    private int index;
-    private float turnSpeed;
-    private bool waveStarted;
-    private bool walking;
+    private int index = 0;
+    private float turnSpeed = 0.05f;
+    private float delay = 1f;
+    private float timer = 0f;
+    private bool waveStarted = false;
+    private bool walking = false;
+    private bool dead = false;
 
     Vector3 difference;
     Quaternion rotGoal;
@@ -21,11 +33,7 @@ public class EnemyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        index = 0;
         target = Waypoints.points[0];
-        turnSpeed = 0.05f;
-        waveStarted = false;
-        walking = false;
         tempo = tempo / 60f;
     }
 
@@ -44,6 +52,7 @@ public class EnemyAI : MonoBehaviour
             }
             */
 
+            // If the model is not walking, start walking
             if (!walking)
             {
                 model.SetTrigger("triggerRun");
@@ -51,12 +60,40 @@ public class EnemyAI : MonoBehaviour
             }
         }
 
-        difference = target.position - transform.position;
-        direction = difference.normalized;
-        rotGoal = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotGoal, turnSpeed);
-        transform.Translate(direction * tempo * Time.deltaTime, Space.World);
+        // Rotates the unit towards the target and begin walking towards the target if the unit is not dead
+        if(!dead)
+        {
+            difference = target.position - transform.position;
+            direction = difference.normalized;
+            rotGoal = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotGoal, turnSpeed);
+            transform.Translate(direction * tempo * Time.deltaTime, Space.World);
+        }
+        else
+        {
+            // Slows motion so it is a less sudden stop
+            difference = target.position - transform.position;
+            direction = difference.normalized;
+            rotGoal = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotGoal, turnSpeed);
+            transform.Translate(direction * tempo/2 * Time.deltaTime, Space.World);
 
+            // Plays death animation if dead
+            model.SetTrigger("triggerDeath");
+
+            // Delay for death animation before destroying game object
+            if(timer <= delay)
+            {
+                timer += Time.deltaTime;
+            }
+
+            if(timer >= delay)
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        // If we reach the target update to the next target
         if(Vector3.Distance(transform.position, target.position) <= 0.4f)
         {
             GetNextWaypoint();
@@ -64,6 +101,7 @@ public class EnemyAI : MonoBehaviour
 
     }
 
+    // Updates waypoint and if the unit reaches the end of the map it will deal damage to the player health
     void GetNextWaypoint()
     {
         if(index >= Waypoints.points.Length - 1)
@@ -75,5 +113,31 @@ public class EnemyAI : MonoBehaviour
 
         index++;
         target = Waypoints.points[index];
+    }
+
+    // Runs damage calculation if hit by a unit
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+
+        if(health <= 0)
+        {
+            dead = true;
+            gameObject.tag = "Untagged";
+            walking = false;
+        }
+    }
+
+    // Checks if the unit is dead
+    public bool IsDead()
+    {
+        if(dead)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

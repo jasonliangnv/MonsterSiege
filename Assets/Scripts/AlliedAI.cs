@@ -7,11 +7,12 @@ public class AlliedAI : MonoBehaviour
 {   
     public Transform target;
     public float range;
-    public float hitRate;
+    public float damage;
     
     [SerializeField] private Animator model;
-    private float turnSpeed;
-    private float hitCD;
+    private float turnSpeed = 0.05f;
+    private float timer = 0f;
+    private float delay = 1.33f;
 
     Vector3 difference;
     Quaternion rotGoal;
@@ -20,11 +21,6 @@ public class AlliedAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //model.SetTrigger("triggerRun");
-        turnSpeed = 0.05f;
-        hitRate = 5f;
-        hitCD = 0f;
-        range = 7f;
         InvokeRepeating("UpdateTarget", 0f, 0.25f);
     }
 
@@ -34,6 +30,7 @@ public class AlliedAI : MonoBehaviour
         // Skips movement and attacks if there is no target
         if(target == null)
         {
+            model.ResetTrigger("triggerHit");
             return;
         }
 
@@ -43,15 +40,23 @@ public class AlliedAI : MonoBehaviour
         rotGoal = Quaternion.LookRotation(direction);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotGoal, turnSpeed);
 
-        // Unit attempts to hit nearest unit at hit rate
-        if (hitCD <= 0f && target != null)
+        // Unit attempts to hit nearest unit at animation hit rate
+        if(target.GetComponent<EnemyAI>().IsDead() == false && timer == 0)
         {
-            // Add damage to enemy unit
             model.SetTrigger("triggerHit");
-            hitCD = 0.25f / hitRate;
-        }
+            target.GetComponent<EnemyAI>().TakeDamage(damage);
 
-        hitCD -= Time.deltaTime;
+            timer += Time.deltaTime;
+        }
+        else
+        {
+            timer += Time.deltaTime;
+        }
+        
+        if(timer >= delay)
+        {
+            timer = 0f;
+        }
     }
 
     // Checks for the nearest enemy target
@@ -61,6 +66,7 @@ public class AlliedAI : MonoBehaviour
         float shortest = Mathf.Infinity;
         GameObject nearest = null;
 
+        // Runs distance calculations
         foreach (GameObject enemy in enemies)
         {
             float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
@@ -72,6 +78,7 @@ public class AlliedAI : MonoBehaviour
             }
         }
 
+        // Retargets based on nearest distance
         if (nearest != null && shortest <= range)
         {
             target = nearest.transform;
