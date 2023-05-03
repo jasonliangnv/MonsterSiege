@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+
+    public GameObject loseTextObject;
+    public AudioSource loseAudio;
+    public AudioSource backgroundAudio;
 
     private bool gameEnded = false;
 
@@ -14,15 +19,18 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        if(PlayerStats.health <= 0)
+        if(PlayerStats.health <= 0 && gameEnded == false)
         {
-            EndGame();
+            loseAudio.Play();
+            backgroundAudio.Stop();
+            loseTextObject.SetActive(true);
+            Invoke("EndGame", 5);
+            gameEnded = true;
         }
     }
 
     void EndGame()
     {
-        gameEnded = true;
-        Debug.Log("Game Over");
+        SceneManager.LoadScene(0);
     }
 }

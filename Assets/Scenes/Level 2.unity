@@ -512,7 +512,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &188731706
 GameObject:
@@ -718,7 +718,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &207054148
 GameObject:
@@ -749,7 +749,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &230872920
 GameObject:
@@ -1550,57 +1550,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5741453326890048333, guid: ac4e0b6be8a50ad4f9512f1eb9643457, type: 3}
   m_PrefabInstance: {fileID: 451836641}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &453395988
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 453395990}
-  - component: {fileID: 453395989}
-  m_Layer: 0
-  m_Name: PlayerStats
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &453395989
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 453395988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d55efc167ce1c94181498643f64c93c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingHealth: 10
-  startingMoney: 15
-  HPText: {fileID: 364389705}
-  MoneyText: {fileID: 1369169526}
-  loseTextObject: {fileID: 1154949885}
-  loseAudio: {fileID: 572523918}
-  backgroundAudio: {fileID: 751598966}
---- !u!4 &453395990
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 453395988}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 947.99646, y: 576.85394, z: 7.8222046}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &464920438
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4137,7 +4086,7 @@ Transform:
   - {fileID: 707253215}
   - {fileID: 59169939}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &917456799
 PrefabInstance:
@@ -5122,7 +5071,7 @@ Transform:
   - {fileID: 328193476}
   - {fileID: 1549907025}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1138542858
 GameObject:
@@ -5270,6 +5219,7 @@ GameObject:
   - component: {fileID: 1153371390}
   - component: {fileID: 1153371389}
   - component: {fileID: 1153371388}
+  - component: {fileID: 1153371391}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -5289,6 +5239,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b45ddd696deebe54b85511cc2521c03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statsText: {fileID: 0}
+  unitIcon: {fileID: 0}
   KnightPrefab: {fileID: 1022148595836406, guid: 5b5b1958cdf88ce49989e326859b9572, type: 3}
   PeasantPrefab: {fileID: 3352729402885124464, guid: a0cb3b35b5fb2564983f2275ffa69733, type: 3}
 --- !u!114 &1153371389
@@ -5352,6 +5304,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1153371391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153371387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13d7e30040130af41bd97a6f31d32695, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loseTextObject: {fileID: 1154949885}
+  loseAudio: {fileID: 572523918}
+  backgroundAudio: {fileID: 751598966}
 --- !u!1 &1154949885
 GameObject:
   m_ObjectHideFlags: 0

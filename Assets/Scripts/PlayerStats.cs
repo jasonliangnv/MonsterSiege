@@ -15,18 +15,27 @@ public class PlayerStats : MonoBehaviour
     public TextMeshProUGUI HPText;
     public TextMeshProUGUI MoneyText;
 
-    public GameObject loseTextObject;
-    public AudioSource loseAudio;
-    public AudioSource backgroundAudio;
-
-    private bool endingLevel;
+    private static PlayerStats instance;
 
     void Start()
     {
+
+        DontDestroyOnLoad(gameObject);
+
+        if(instance != null)
+        {
+            Destroy(gameObject);
+        }
+
+        instance = this;
+
         health = startingHealth;
         money = startingMoney;
 
-        endingLevel = false;
+        HPText = GameObject.Find("HealthText").GetComponent<TextMeshProUGUI>();
+        MoneyText = GameObject.Find("MoneyText").GetComponent<TextMeshProUGUI>();
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void Update()
@@ -34,21 +43,13 @@ public class PlayerStats : MonoBehaviour
         // Prints HP to the UI
         HPText.text = string.Format("{00}", health);
         MoneyText.text = string.Format("{00}", money);
-
-        // If player reaches 0 hp they lose the level
-        if (health == 0 && endingLevel == false)
-        {
-            endingLevel = true;
-            loseAudio.Play();
-            backgroundAudio.Stop();
-            loseTextObject.SetActive(true);
-            Invoke("PlayNextLevel", 5);            
-        }
     }
 
-    // Plays next level
-    void PlayNextLevel()
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        SceneManager.LoadScene(0);
+        health = startingHealth;
+        money = startingMoney;
+        HPText = GameObject.Find("HealthText").GetComponent<TextMeshProUGUI>();
+        MoneyText = GameObject.Find("MoneyText").GetComponent<TextMeshProUGUI>();
     }
 }

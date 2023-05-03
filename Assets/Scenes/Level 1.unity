@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2528,7 +2528,6 @@ GameObject:
   - component: {fileID: 536774094}
   - component: {fileID: 536774093}
   - component: {fileID: 536774092}
-  - component: {fileID: 536774095}
   - component: {fileID: 536774096}
   m_Layer: 5
   m_Name: KnightUnit
@@ -2653,21 +2652,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 536774090}
   m_CullTransparentMesh: 1
---- !u!114 &536774095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 536774090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb68b87abc8b86842b485f5da387f337, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unitIcon: {fileID: 1983291096}
-  stats: {fileID: 1435625575}
-  unitToDisplay: {fileID: 0}
 --- !u!114 &536774096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2685,7 +2669,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 536774095}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: UnitStatsScreen, Assembly-CSharp
           m_MethodName: MouseEnter
           m_Mode: 1
@@ -4180,6 +4164,7 @@ GameObject:
   - component: {fileID: 955890795}
   - component: {fileID: 955890794}
   - component: {fileID: 955890793}
+  - component: {fileID: 955890796}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -4232,7 +4217,7 @@ MonoBehaviour:
   - enemy: {fileID: 4427376173531245595, guid: b91f2cacb0bef7f4bac8f61b0f00b4c6, type: 3}
     count: 2
     rate: 1
-    icon: {fileID: 21300000, guid: 71c79df97269edd4ba461d5fb8eea171, type: 3}
+    icon: {fileID: 21300000, guid: ac1e0643a233e9d4381d23a07fc65fd3, type: 3}
   - enemy: {fileID: 8272943599224061573, guid: 47b41978aba272c47ae5f4a2f7179c61, type: 3}
     count: 6
     rate: 3
@@ -4264,6 +4249,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &955890796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955890792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13d7e30040130af41bd97a6f31d32695, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loseTextObject: {fileID: 1198485004}
+  loseAudio: {fileID: 1606229759}
+  backgroundAudio: {fileID: 233096634}
 --- !u!4 &962068726 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4300249991780661364, guid: c81552018025329478fdf7f4f5b1725f, type: 3}
@@ -9131,11 +9131,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 10
   startingMoney: 15
-  HPText: {fileID: 1547976020}
-  MoneyText: {fileID: 1463999093}
-  loseTextObject: {fileID: 1198485004}
-  loseAudio: {fileID: 1606229759}
-  backgroundAudio: {fileID: 233096634}
+  HPText: {fileID: 0}
+  MoneyText: {fileID: 0}
 --- !u!4 &2045532550
 Transform:
   m_ObjectHideFlags: 0

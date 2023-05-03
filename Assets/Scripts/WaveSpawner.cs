@@ -39,6 +39,7 @@ public class WaveSpawner : MonoBehaviour
 
     void Update()
     {
+
         if(waveNumber <= (waves.Length - 1))
         {
             if(waves[waveNumber] != null)
