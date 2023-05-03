@@ -11,6 +11,7 @@ public class Node : MonoBehaviour
 
     private Renderer rend;
     private Color startColor;
+    private Vector3 offset;
 
     BuildManager buildManager;
 
@@ -46,6 +47,8 @@ public class Node : MonoBehaviour
         {
             unit = Instantiate(unitToBuild, transform.position, transform.rotation);
             PlayerStats.money -= unitCost;
+            GameObject effect = Instantiate(buildManager.buildEffect, gameObject.transform.position , Quaternion.identity);
+            Destroy(effect, 5f);
         }
         else
         {
