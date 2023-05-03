@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 95382778294392932}
   - component: {fileID: -7018208567270827875}
   m_Layer: 0
-  m_Name: Meshtint Free Knight
+  m_Name: Knight
   m_TagString: Ally
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
