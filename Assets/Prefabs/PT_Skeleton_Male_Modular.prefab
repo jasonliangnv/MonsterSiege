@@ -1562,7 +1562,7 @@ GameObject:
   - component: {fileID: -5113440060560523463}
   m_Layer: 0
   m_Name: PT_Skeleton_Male_Modular
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1621,6 +1621,7 @@ MonoBehaviour:
   target: {fileID: 0}
   tempo: 300
   health: 30
+  money: 0
   model: {fileID: 6979118533080132827}
 --- !u!1 &4501724173308995233
 GameObject:

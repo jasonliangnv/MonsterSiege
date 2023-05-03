@@ -12,15 +12,15 @@ public class Shop : MonoBehaviour
     }
 
 
-    public void PurchaseStandardUnit()
+    public void PurchaseKnightUnit()
     {
-        Debug.Log("Standard Unit Purchased");
-        buildManager.SetUnitToBuild(buildManager.standardUnitPrefab);
+        Debug.Log("Knight Unit Purchased");
+        buildManager.SetUnitToBuild(buildManager.KnightPrefab);
     }
 
-    public void PurchaseOtherUnit()
+    public void PurchasePeasantUnit()
     {
-        Debug.Log("Other Unit Purchased");
-        buildManager.SetUnitToBuild(buildManager.otherUnitPrefab);
+        Debug.Log("Peasant Purchased");
+        buildManager.SetUnitToBuild(buildManager.PeasantPrefab);
     }
 }

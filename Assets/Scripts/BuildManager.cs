@@ -17,8 +17,8 @@ public class BuildManager : MonoBehaviour
 
     private GameObject unitToBuild;
 
-    public GameObject standardUnitPrefab;
-    public GameObject otherUnitPrefab;
+    public GameObject KnightPrefab;
+    public GameObject PeasantPrefab;
 
     public GameObject GetUnitToBuild()
     {

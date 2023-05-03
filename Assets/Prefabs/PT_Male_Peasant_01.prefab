@@ -1371,7 +1371,7 @@ Animator:
   m_GameObject: {fileID: 3352729402885124464}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: e8196b76e6108b74aa9c9192f64f5003, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9e3cdc50972d05f4fafcb2b1d8606790, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -1394,9 +1394,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  range: 5
+  range: 6
   damage: 10
-  cost: 1
+  cost: 5
   model: {fileID: 8299208155895968176}
 --- !u!1 &3512267299450506961
 GameObject:
