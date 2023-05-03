@@ -8,6 +8,16 @@ public class PauseMenu : MonoBehaviour
     public bool paused;
     public GameObject pauseMenuUI;
     public GameObject canvasUI;
+    public static PauseMenu instance;
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogError("More than one PauseMenu");
+        }
+        instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
