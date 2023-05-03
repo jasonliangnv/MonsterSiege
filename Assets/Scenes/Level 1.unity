@@ -5116,6 +5116,7 @@ MonoBehaviour:
   unitIcon: {fileID: 1983291096}
   KnightPrefab: {fileID: 1022148595836406, guid: 5b5b1958cdf88ce49989e326859b9572, type: 3}
   PeasantPrefab: {fileID: 3352729402885124464, guid: a0cb3b35b5fb2564983f2275ffa69733, type: 3}
+  buildEffect: {fileID: 7534113657716811167, guid: 5c3859b10638d89429b71b7b4c4fbddc, type: 3}
 --- !u!114 &955890794
 MonoBehaviour:
   m_ObjectHideFlags: 0

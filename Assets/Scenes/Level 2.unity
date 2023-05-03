@@ -2672,7 +2672,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81c7ab6e4ace921479bb25626a449c6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paused: 0
   pauseMenuUI: {fileID: 612756901}
   canvasUI: {fileID: 2129148978}
 --- !u!4 &612756903
@@ -4934,7 +4933,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81c7ab6e4ace921479bb25626a449c6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paused: 0
   pauseMenuUI: {fileID: 612756901}
   canvasUI: {fileID: 2129148978}
 --- !u!114 &1135537227
@@ -5243,6 +5241,7 @@ MonoBehaviour:
   unitIcon: {fileID: 0}
   KnightPrefab: {fileID: 1022148595836406, guid: 5b5b1958cdf88ce49989e326859b9572, type: 3}
   PeasantPrefab: {fileID: 3352729402885124464, guid: a0cb3b35b5fb2564983f2275ffa69733, type: 3}
+  buildEffect: {fileID: 7534113657716811167, guid: 5c3859b10638d89429b71b7b4c4fbddc, type: 3}
 --- !u!114 &1153371389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5286,6 +5285,7 @@ MonoBehaviour:
   waveUnitIcon: {fileID: 844784401}
   waveUnitNumber: {fileID: 591376783}
   winTextObject: {fileID: 1483990796}
+  treasureSelect: {fileID: 0}
   winAudio: {fileID: 188731708}
   backgroundAudio: {fileID: 751598966}
   timeBetweenWaves: 5
