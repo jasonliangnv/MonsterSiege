@@ -21,6 +21,7 @@ public class WaveSpawner : MonoBehaviour
     public TMP_Text waveUnitNumber;
 
     public GameObject winTextObject;
+    public GameObject treasureSelect;
     public AudioSource winAudio;
     public AudioSource backgroundAudio;
 
@@ -34,13 +35,26 @@ public class WaveSpawner : MonoBehaviour
     {
         EnemiesAlive = 0;
         winTextObject.SetActive(false);
+        treasureSelect.SetActive(false);
         endingLevel = false;
     }
 
     void Update()
     {
 
-        if(waveNumber <= (waves.Length - 1))
+        // Debug function to immediately end level 1
+        /*
+        if(SceneManager.GetActiveScene().buildIndex != 2 && endingLevel == false)
+        {
+            endingLevel = true;
+            winAudio.Play();
+            backgroundAudio.Stop();
+            winTextObject.SetActive(true);
+            Invoke("SelectTreasure", 5);
+        }
+        */
+        
+        if(waveNumber <= (waves.Length - 1) && endingLevel == false)
         {
             if(waves[waveNumber] != null)
             {
@@ -59,14 +73,22 @@ public class WaveSpawner : MonoBehaviour
             countdown -= Time.deltaTime;
         }
 
-        // Outputs win audio, win text, and loads next scene
+        // Outputs win audio, win text, and treasure scene if it is not the last level
         if(waveNumber == waves.Length && EnemiesAlive == 0 && endingLevel == false)
         {
             endingLevel = true;
             winAudio.Play();
             backgroundAudio.Stop();
             winTextObject.SetActive(true);
-            Invoke("PlayNextLevel", 5);
+
+            if(SceneManager.GetActiveScene().buildIndex != 2)
+            {
+                Invoke("SelectTreasure", 5);
+            }
+            else
+            {
+                Invoke("ReturnToMenu", 5);
+            }
         }
     }
 
@@ -90,17 +112,14 @@ public class WaveSpawner : MonoBehaviour
         EnemiesAlive++;
     }
 
-    // Plays next level
-    void PlayNextLevel()
+    void SelectTreasure()
     {
-        // Change this to whatever highest level we complete
-        if (SceneManager.GetActiveScene().buildIndex != 2)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
-        else
-        {
-            SceneManager.LoadScene(0);
-        }
+        winTextObject.SetActive(false);
+        treasureSelect.SetActive(true);
+    }
+
+    void ReturnToMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }

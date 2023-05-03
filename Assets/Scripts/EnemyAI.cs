@@ -13,6 +13,7 @@ public class EnemyAI : MonoBehaviour
     //[HideInInspector]
     
     public float health;
+    public int debuffMS = 0;
     public int money;
 
     //[Header("HP Bar")]
@@ -35,7 +36,7 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         target = Waypoints.points[0];
-        tempo = tempo / 60f;
+        tempo = (tempo - debuffMS) / 60f;
     }
 
     // Update is called once per frame
