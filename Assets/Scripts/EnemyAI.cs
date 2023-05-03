@@ -13,6 +13,7 @@ public class EnemyAI : MonoBehaviour
     //[HideInInspector]
     
     public float health;
+    public int money;
 
     //[Header("HP Bar")]
     //public Image healthBar;
@@ -93,6 +94,7 @@ public class EnemyAI : MonoBehaviour
                 GameObject waveController = GameObject.Find("GameManager");
                 WaveSpawner levelTracker = waveController.GetComponent<WaveSpawner>();
 
+                PlayerStats.money += money;
                 levelTracker.EnemiesAlive--;
 
                 Destroy(gameObject);
