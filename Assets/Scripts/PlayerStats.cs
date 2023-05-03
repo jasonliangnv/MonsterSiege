@@ -6,40 +6,50 @@ using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
-    public int health = 10;
-    public int money;
+    public static int health;
+    public static int money;
+
+    public int startingHealth;
+    public int startingMoney;
 
     public TextMeshProUGUI HPText;
-    public GameObject loseTextObject;
-    public AudioSource loseAudio;
-    public AudioSource backgroundAudio;
+    public TextMeshProUGUI MoneyText;
 
-    private bool endingLevel;
+    private static PlayerStats instance;
 
     void Start()
     {
-        endingLevel = false;
+
+        DontDestroyOnLoad(gameObject);
+
+        if(instance != null)
+        {
+            Destroy(gameObject);
+        }
+
+        instance = this;
+
+        health = startingHealth;
+        money = startingMoney;
+
+        HPText = GameObject.Find("HealthText").GetComponent<TextMeshProUGUI>();
+        MoneyText = GameObject.Find("MoneyText").GetComponent<TextMeshProUGUI>();
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void Update()
     {
         // Prints HP to the UI
         HPText.text = string.Format("{00}", health);
-
-        // If player reaches 0 hp they lose the level
-        if(health == 0 && endingLevel == false)
-        {
-            endingLevel = true;
-            loseAudio.Play();
-            backgroundAudio.Stop();
-            loseTextObject.SetActive(true);
-            Invoke("PlayNextLevel", 5);            
-        }
+        MoneyText.text = string.Format("{00}", money);
     }
 
-    // Plays next level
-    void PlayNextLevel()
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        SceneManager.LoadScene(0);
+        //health = startingHealth;
+        money += startingMoney;
+        HPText = GameObject.Find("HealthText").GetComponent<TextMeshProUGUI>();
+        MoneyText = GameObject.Find("MoneyText").GetComponent<TextMeshProUGUI>();
     }
 }
