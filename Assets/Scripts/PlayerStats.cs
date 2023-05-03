@@ -35,7 +35,6 @@ public class PlayerStats : MonoBehaviour
         HPText.text = string.Format("{00}", health);
         MoneyText.text = string.Format("{00}", money);
 
-
         // If player reaches 0 hp they lose the level
         if (health == 0 && endingLevel == false)
         {
