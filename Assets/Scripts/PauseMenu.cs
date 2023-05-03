@@ -5,24 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public bool paused;
     public GameObject pauseMenuUI;
     public GameObject canvasUI;
-    public static PauseMenu instance;
-
-    private void Awake()
-    {
-        if (instance != null)
-        {
-            Debug.LogError("More than one PauseMenu");
-        }
-        instance = this;
-    }
 
     // Start is called before the first frame update
     void Start()
     {
-        paused = false;
+        GameManager.paused = false;
     }
 
     // Update is called once per frame
@@ -30,7 +19,7 @@ public class PauseMenu : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            if (paused)
+            if (GameManager.paused)
             {
                 ResumeGame();
             }
@@ -46,7 +35,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1;
         canvasUI.SetActive(true);
         pauseMenuUI.SetActive(false);
-        paused = false;
+        GameManager.paused = false;
     }
 
     public void PauseGame()
@@ -54,7 +43,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0;
         canvasUI.SetActive(false);
         pauseMenuUI.SetActive(true);
-        paused = true;
+        GameManager.paused = true;
     }
 
     public void QuitLevel()

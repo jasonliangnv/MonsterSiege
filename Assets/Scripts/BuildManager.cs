@@ -10,6 +10,7 @@ public class BuildManager : MonoBehaviour
     public TMP_Text statsText;
     public Image unitIcon;
 
+
     private void Awake()
     {
         if(instance != null)
@@ -45,11 +46,14 @@ public class BuildManager : MonoBehaviour
             unitIcon.gameObject.SetActive(true);
         }
 
-        AlliedAI unitStats = unitToBuild.GetComponent<AlliedAI>();
-        unitIcon.sprite = unitStats.icon;
-        statsText.text = "Stats: \n" +
-            "Attack: " + unitStats.damage.ToString() + "\n" + 
-            "Range: " + unitStats.range.ToString() + "\n" +
-            "Cost: " + unitStats.cost.ToString();
+        if(unitToBuild != null)
+        {
+            AlliedAI unitStats = unitToBuild.GetComponent<AlliedAI>();
+            unitIcon.sprite = unitStats.icon;
+            statsText.text = "Unit: " + unitStats.name.ToString() + "\n" +
+                "Attack: " + unitStats.damage.ToString() + "\n" + 
+                "Range: " + unitStats.range.ToString() + "\n" +
+                "Cost: " + unitStats.cost.ToString();
+        }
     }
 }

@@ -13,7 +13,6 @@ public class Node : MonoBehaviour
     private Color startColor;
 
     BuildManager buildManager;
-    PauseMenu pauseMenu;
 
     private void Start()
     {
@@ -21,7 +20,6 @@ public class Node : MonoBehaviour
         startColor = rend.material.color;
 
         buildManager = BuildManager.instance;
-        pauseMenu = PauseMenu.instance;
     }
 
     private void OnMouseDown()
@@ -31,7 +29,7 @@ public class Node : MonoBehaviour
             return;
         }
 
-        if(pauseMenu.paused == true)
+        if(GameManager.paused == true)
         {
             return;
         }
