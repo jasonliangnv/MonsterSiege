@@ -92,6 +92,14 @@ public class WaveSpawner : MonoBehaviour
     // Plays next level
     void PlayNextLevel()
     {
-        SceneManager.LoadScene(0);
+        // Change this to whatever highest level we complete
+        if (SceneManager.GetActiveScene().buildIndex != 2)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        else
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 }

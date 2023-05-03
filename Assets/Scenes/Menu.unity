@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 66f7c97cab4a90740994b740ac448681, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: ce6a10c5c09ff3f49a036a9b890cfcaf, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -5124,7 +5124,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 643337656}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: PlayLevel1
+        m_MethodName: PlayGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
