@@ -1336,7 +1336,7 @@ GameObject:
   - component: {fileID: 8299208155895968176}
   - component: {fileID: 8837551070898376934}
   m_Layer: 0
-  m_Name: PT_Male_Peasant_01
+  m_Name: Peasant
   m_TagString: Ally
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
