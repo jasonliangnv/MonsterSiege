@@ -1619,9 +1619,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  tempo: 300
+  tempo: 250
   health: 30
-  money: 0
+  money: 2
   model: {fileID: 6979118533080132827}
 --- !u!1 &4501724173308995233
 GameObject:

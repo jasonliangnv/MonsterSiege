@@ -6,8 +6,8 @@ using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
-    public static int health = 10;
-    public static int money = 50;
+    public static int health;
+    public static int money;
 
     public int startingHealth;
     public int startingMoney;
@@ -47,8 +47,8 @@ public class PlayerStats : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        health = startingHealth;
-        money = startingMoney;
+        //health = startingHealth;
+        money += startingMoney;
         HPText = GameObject.Find("HealthText").GetComponent<TextMeshProUGUI>();
         MoneyText = GameObject.Find("MoneyText").GetComponent<TextMeshProUGUI>();
     }

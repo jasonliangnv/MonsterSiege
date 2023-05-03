@@ -4225,7 +4225,7 @@ MonoBehaviour:
   - enemy: {fileID: 4427376173531245595, guid: b91f2cacb0bef7f4bac8f61b0f00b4c6, type: 3}
     count: 4
     rate: 2
-    icon: {fileID: 21300000, guid: 71c79df97269edd4ba461d5fb8eea171, type: 3}
+    icon: {fileID: 21300000, guid: ac1e0643a233e9d4381d23a07fc65fd3, type: 3}
   spawnPoint: {fileID: 487407990}
   waveCountText: {fileID: 1547779286}
   waveUnitIcon: {fileID: 365436223}

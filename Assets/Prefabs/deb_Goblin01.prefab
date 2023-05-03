@@ -273,6 +273,7 @@ MonoBehaviour:
   target: {fileID: 0}
   tempo: 400
   health: 15
+  money: 1
   model: {fileID: 8272943599214529815}
 --- !u!1 &8272943599224061575
 GameObject:
