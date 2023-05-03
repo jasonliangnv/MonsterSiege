@@ -10,6 +10,7 @@ public class AlliedAI : MonoBehaviour
     public float range;
     public float damage;
     public int cost;
+    public Sprite icon;
 
     [SerializeField] private Animator model;
     private float turnSpeed = 0.05f;
