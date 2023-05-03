@@ -21,7 +21,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private Animator model;
     private int index = 0;
     private float turnSpeed = 0.05f;
-    private float delay = 1f;
+    private float delay = 1.3f;
     private float timer = 0f;
     private bool waveStarted = false;
     private bool walking = false;
@@ -72,19 +72,22 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
-            // Slows motion so it is a less sudden stop
-            difference = target.position - transform.position;
-            direction = difference.normalized;
-            rotGoal = Quaternion.LookRotation(direction);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotGoal, turnSpeed);
-            transform.Translate(direction * tempo/5 * Time.deltaTime, Space.World);
-
-            // Plays death animation if dead
-            model.SetTrigger("triggerDeath");
+            if(timer >= 0.3f)
+            {
+                // Plays death animation if dead
+                model.SetTrigger("triggerDeath");
+            }
 
             // Delay for death animation before destroying game object
             if(timer <= delay)
             {
+                // Slows motion so it is a less sudden stop
+                difference = target.position - transform.position;
+                direction = difference.normalized;
+                rotGoal = Quaternion.LookRotation(direction);
+                transform.rotation = Quaternion.Slerp(transform.rotation, rotGoal, turnSpeed);
+                transform.Translate(direction * tempo/2 * Time.deltaTime, Space.World);
+
                 timer += Time.deltaTime;
             }
 
