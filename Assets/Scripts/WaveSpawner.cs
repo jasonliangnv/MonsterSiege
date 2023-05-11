@@ -20,12 +20,15 @@ public class WaveSpawner : MonoBehaviour
     public Image waveUnitIcon;
     public TMP_Text waveUnitNumber;
 
+    public GameObject fireworks1;
+    public GameObject fireworks2;    
     public GameObject winTextObject;
     public GameObject treasureSelect;
     public AudioSource winAudio;
     public AudioSource backgroundAudio;
 
     public float timeBetweenWaves = 5f;
+
     private float countdown = 2f;
 
     private int waveNumber = 0;
@@ -83,7 +86,12 @@ public class WaveSpawner : MonoBehaviour
 
             if(SceneManager.GetActiveScene().buildIndex != 2)
             {
-                Invoke("SelectTreasure", 5);
+                for(int i = 0; i <= 5; i++)
+                {
+                    StartCoroutine(LaunchFireworks());
+                }
+
+                Invoke("SelectTreasure", 6);
             }
             else
             {
@@ -121,5 +129,12 @@ public class WaveSpawner : MonoBehaviour
     void ReturnToMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public IEnumerator LaunchFireworks()
+    {
+        fireworks1.SetActive(true);
+        yield return new WaitForSeconds(0.05f);
+        fireworks2.SetActive(true);
     }
 }
