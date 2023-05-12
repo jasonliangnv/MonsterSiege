@@ -11,7 +11,6 @@ public class Shop : MonoBehaviour
         buildManager = BuildManager.instance;
     }
 
-
     public void PurchaseKnightUnit()
     {
         Debug.Log("Knight Unit Purchased");
@@ -22,5 +21,11 @@ public class Shop : MonoBehaviour
     {
         Debug.Log("Peasant Purchased");
         buildManager.SetUnitToBuild(buildManager.PeasantPrefab);
+    }
+
+    public void PurchasePriestUnit()
+    {
+        Debug.Log("Priest Purchased");
+        buildManager.SetUnitToBuild(buildManager.PriestPrefab);        
     }
 }

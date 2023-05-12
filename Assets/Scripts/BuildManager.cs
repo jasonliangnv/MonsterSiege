@@ -24,6 +24,7 @@ public class BuildManager : MonoBehaviour
 
     public GameObject KnightPrefab;
     public GameObject PeasantPrefab;
+    public GameObject PriestPrefab;
 
     public GameObject buildEffect;
 

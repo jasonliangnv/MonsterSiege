@@ -240,7 +240,7 @@ MonoBehaviour:
   range: 6
   damage: 15
   cost: 10
-  icon: {fileID: 21300000, guid: 6564094a45a884f4ca33acec9c6cbb79, type: 3}
+  icon: {fileID: 21300000, guid: b9e79a69b783337438d9869272afd202, type: 3}
   model: {fileID: 95382778294392932}
 --- !u!1 &1087546517206048
 GameObject:
