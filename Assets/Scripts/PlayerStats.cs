@@ -48,7 +48,13 @@ public class PlayerStats : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         //health = startingHealth;
-        money += startingMoney;
+        
+        // Gives the player money depending on the level to make up for last levels unit costs
+        if(SceneManager.GetActiveScene().buildIndex == 2)
+            money += startingMoney;
+        else if(SceneManager.GetActiveScene().buildIndex == 3)
+            money += startingMoney * 2;
+    
         HPText = GameObject.Find("HealthText").GetComponent<TextMeshProUGUI>();
         MoneyText = GameObject.Find("MoneyText").GetComponent<TextMeshProUGUI>();
     }

@@ -14,7 +14,7 @@ public class MenuController : MonoBehaviour
     public void PlayNextLevel()
     {
         // Change this to whatever highest level we complete
-        if (SceneManager.GetActiveScene().buildIndex != 2)
+        if (SceneManager.GetActiveScene().buildIndex != 3)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }

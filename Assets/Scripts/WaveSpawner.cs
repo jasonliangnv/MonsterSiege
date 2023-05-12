@@ -84,7 +84,7 @@ public class WaveSpawner : MonoBehaviour
             backgroundAudio.Stop();
             winTextObject.SetActive(true);
 
-            if(SceneManager.GetActiveScene().buildIndex != 2)
+            if(SceneManager.GetActiveScene().buildIndex != 3)
             {
                 for(int i = 0; i <= 5; i++)
                 {
@@ -95,6 +95,11 @@ public class WaveSpawner : MonoBehaviour
             }
             else
             {
+                for(int i = 0; i <= 5; i++)
+                {
+                    StartCoroutine(LaunchFireworks());
+                }
+
                 Invoke("ReturnToMenu", 5);
             }
         }
