@@ -32614,15 +32614,15 @@ MonoBehaviour:
   EnemiesAlive: 0
   waves:
   - enemy: {fileID: 8272943599224061573, guid: 47b41978aba272c47ae5f4a2f7179c61, type: 3}
-    count: 6
-    rate: 2
+    count: 2
+    rate: 1
     icon: {fileID: 21300000, guid: 71c79df97269edd4ba461d5fb8eea171, type: 3}
   - enemy: {fileID: 8272943599224061573, guid: 47b41978aba272c47ae5f4a2f7179c61, type: 3}
-    count: 15
-    rate: 5
+    count: 6
+    rate: 3
     icon: {fileID: 21300000, guid: 71c79df97269edd4ba461d5fb8eea171, type: 3}
   - enemy: {fileID: 4427376173531245595, guid: b91f2cacb0bef7f4bac8f61b0f00b4c6, type: 3}
-    count: 6
+    count: 4
     rate: 2
     icon: {fileID: 21300000, guid: ac1e0643a233e9d4381d23a07fc65fd3, type: 3}
   - enemy: {fileID: 4427376173531245595, guid: b91f2cacb0bef7f4bac8f61b0f00b4c6, type: 3}
@@ -32630,12 +32630,24 @@ MonoBehaviour:
     rate: 4
     icon: {fileID: 21300000, guid: ac1e0643a233e9d4381d23a07fc65fd3, type: 3}
   - enemy: {fileID: 8272943599224061573, guid: 47b41978aba272c47ae5f4a2f7179c61, type: 3}
-    count: 40
+    count: 20
+    rate: 5
+    icon: {fileID: 21300000, guid: 71c79df97269edd4ba461d5fb8eea171, type: 3}
+  - enemy: {fileID: 4427376173531245595, guid: b91f2cacb0bef7f4bac8f61b0f00b4c6, type: 3}
+    count: 20
+    rate: 5
+    icon: {fileID: 21300000, guid: ac1e0643a233e9d4381d23a07fc65fd3, type: 3}
+  - enemy: {fileID: 8272943599224061573, guid: 47b41978aba272c47ae5f4a2f7179c61, type: 3}
+    count: 30
     rate: 10
     icon: {fileID: 21300000, guid: 71c79df97269edd4ba461d5fb8eea171, type: 3}
   - enemy: {fileID: 4427376173531245595, guid: b91f2cacb0bef7f4bac8f61b0f00b4c6, type: 3}
-    count: 50
-    rate: 5
+    count: 30
+    rate: 10
+    icon: {fileID: 21300000, guid: ac1e0643a233e9d4381d23a07fc65fd3, type: 3}
+  - enemy: {fileID: 4427376173531245595, guid: b91f2cacb0bef7f4bac8f61b0f00b4c6, type: 3}
+    count: 30
+    rate: 10
     icon: {fileID: 21300000, guid: ac1e0643a233e9d4381d23a07fc65fd3, type: 3}
   spawnPoint: {fileID: 1731713470}
   waveCountText: {fileID: 330332206}

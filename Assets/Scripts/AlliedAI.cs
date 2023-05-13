@@ -143,7 +143,7 @@ public class AlliedAI : MonoBehaviour
         if(ranged)
             yield return new WaitForSeconds(0.9f);
         else
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
         
         Destroy(hitAudio);
     }
