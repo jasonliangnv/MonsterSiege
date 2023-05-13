@@ -396,9 +396,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2022300574220288122}
-        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
-        m_MethodName: PlayNextLevel
+      - m_Target: {fileID: -4218262111211276561}
+        m_TargetAssemblyTypeName: TreasureController, Assembly-CSharp
+        m_MethodName: BolsterDefenses
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -408,9 +408,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: -4218262111211276561}
-        m_TargetAssemblyTypeName: TreasureController, Assembly-CSharp
-        m_MethodName: BolsterDefenses
+      - m_Target: {fileID: 2022300574220288122}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: PlayNextLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

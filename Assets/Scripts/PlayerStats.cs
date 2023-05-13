@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using TMPro;
 
 public class PlayerStats : MonoBehaviour
@@ -14,6 +15,20 @@ public class PlayerStats : MonoBehaviour
 
     public TextMeshProUGUI HPText;
     public TextMeshProUGUI MoneyText;
+    public GameObject treasuresGrid;
+
+    public static List<Sprite> treasures = new List<Sprite>();
+
+    public static Dictionary<string, int> allyModifiers = new Dictionary<string, int>()
+    {
+        {"attack", 0},
+        {"range", 0 },
+    };
+
+    public static Dictionary<string, int> enemyModifiers = new Dictionary<string, int>()
+    {
+        {"speed", 0}
+    };
 
     private static PlayerStats instance;
 
@@ -34,6 +49,7 @@ public class PlayerStats : MonoBehaviour
 
         HPText = GameObject.Find("HealthText").GetComponent<TextMeshProUGUI>();
         MoneyText = GameObject.Find("MoneyText").GetComponent<TextMeshProUGUI>();
+        treasuresGrid = GameObject.Find("TreasuresGrid");
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -57,5 +73,27 @@ public class PlayerStats : MonoBehaviour
     
         HPText = GameObject.Find("HealthText").GetComponent<TextMeshProUGUI>();
         MoneyText = GameObject.Find("MoneyText").GetComponent<TextMeshProUGUI>();
+        treasuresGrid = GameObject.Find("TreasuresGrid");
+
+        //loads sprites into grid
+        foreach (Sprite treasureSprite in treasures)
+        {
+            GameObject spriteObject = new GameObject("SpriteObject");
+            spriteObject.transform.SetParent(treasuresGrid.transform);
+            Image image = spriteObject.AddComponent<Image>();
+            image.sprite = treasureSprite;
+            spriteObject.layer = 5;
+        }
+    }
+
+    public static void AddTreasure(GameObject treasure)
+    {
+        //saves sprite from treasure
+        Transform trans = treasure.transform;
+        Transform childTrans = trans.Find("Portrait");
+        if (childTrans != null)
+        {
+            treasures.Add(childTrans.gameObject.GetComponent<Image>().sprite);
+        }
     }
 }

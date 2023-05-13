@@ -25,6 +25,9 @@ public class AlliedAI : MonoBehaviour
     void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, 0.25f);
+
+        damage += PlayerStats.allyModifiers["attack"];
+        range += PlayerStats.allyModifiers["range"];
     }
 
     // Update is called once per frame

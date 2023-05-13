@@ -68,7 +68,18 @@ public class Node : MonoBehaviour
             return;
         }
 
-        rend.material.color = hoverColor;
+        GameObject unitToBuild = buildManager.GetUnitToBuild();
+        int unitCost = unitToBuild.GetComponent<AlliedAI>().cost;
+
+        if (PlayerStats.money < unitCost)
+        {
+            rend.material.color = Color.red;
+        }
+        else
+        {
+            rend.material.color = hoverColor;
+        }
+
     }
 
     void OnMouseExit()

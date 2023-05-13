@@ -35,6 +35,7 @@ public class EnemyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        debuffMS += PlayerStats.enemyModifiers["speed"];
         target = Waypoints.points[0];
         tempo = (tempo - debuffMS) / 60f;
     }
