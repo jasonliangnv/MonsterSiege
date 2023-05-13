@@ -1508,6 +1508,7 @@ MonoBehaviour:
   range: 20
   damage: 10
   cost: 15
+  ranged: 1
   icon: {fileID: 21300000, guid: d86c27df3b0375043a6e4b720f687580, type: 3}
   model: {fileID: 1665000017619231737}
 --- !u!1 &5561675242310309083

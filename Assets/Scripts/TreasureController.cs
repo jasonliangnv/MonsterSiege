@@ -6,13 +6,13 @@ public class TreasureController : MonoBehaviour
 {
     public void BolsterDefenses()
     {
-        PlayerStats.health += 5;
+        PlayerStats.health += 10;
         PlayerStats.AddTreasure(gameObject);
     }
 
     public void PoisonEnemy()
     {
-        PlayerStats.enemyModifiers["speed"] += 5;
+        PlayerStats.enemyModifiers["speed"] += 10;
         PlayerStats.AddTreasure(gameObject);
     }
 

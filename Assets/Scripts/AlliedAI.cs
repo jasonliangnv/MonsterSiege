@@ -10,6 +10,7 @@ public class AlliedAI : MonoBehaviour
     public float range;
     public float damage;
     public int cost;
+    public bool ranged;
     public Sprite icon;
 
     [SerializeField] private Animator model;
@@ -20,6 +21,7 @@ public class AlliedAI : MonoBehaviour
     Vector3 difference;
     Quaternion rotGoal;
     Vector3 direction;
+    GameObject hitAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -47,17 +49,22 @@ public class AlliedAI : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, rotGoal, turnSpeed);
 
         // Unit attempts to hit nearest unit at animation hit rate
-        if(target.GetComponent<EnemyAI>().IsDead() == false && timer == 0)
+        if(target.GetComponent<EnemyAI>().IsDead() == false && timer == 0 && ranged == false)
         {
             model.SetTrigger("triggerHit");
             
-            GameObject hitAudio = GameObject.Find("HitSound");
+            hitAudio = Instantiate(GameObject.Find("HitSound"));
             AudioSource hit = hitAudio.GetComponent<AudioSource>();
-            
             hit.Play();
             target.GetComponent<EnemyAI>().TakeDamage(damage);
+            StartCoroutine(DeleteSound());
 
             timer += Time.deltaTime;
+        }
+        else if (target.GetComponent<EnemyAI>().IsDead() == false && timer == 0 && ranged == true)
+        {
+            delay = 1.5f;
+            FireProjectile();
         }
         else
         {
@@ -105,5 +112,16 @@ public class AlliedAI : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, range);
+    }
+
+    void FireProjectile()
+    {
+
+    }
+
+    public IEnumerator DeleteSound()
+    {
+        yield return new WaitForSeconds(1.15f);
+        Destroy(hitAudio);
     }
 }
