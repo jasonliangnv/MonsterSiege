@@ -17,7 +17,7 @@ public class AlliedAI : MonoBehaviour
 
     [SerializeField] private Animator model;
     private float turnSpeed = 0.1f;
-    private float timer = 0f;
+    private float timer = 1.33f;
     private float delay;
 
     Vector3 difference;
@@ -30,10 +30,7 @@ public class AlliedAI : MonoBehaviour
     {
         InvokeRepeating("UpdateTarget", 0f, 0.25f);
 
-        if(ranged)
-            delay = 1.33f;
-        else
-            delay = 1.33f;
+        delay = 1.33f;
 
         damage += PlayerStats.allyModifiers["attack"];
         range += PlayerStats.allyModifiers["range"];
@@ -144,9 +141,9 @@ public class AlliedAI : MonoBehaviour
     public IEnumerator DeleteSound()
     {
         if(ranged)
-            yield return new WaitForSeconds(0.862f);
+            yield return new WaitForSeconds(0.9f);
         else
-            yield return new WaitForSeconds(1.33f);
+            yield return new WaitForSeconds(2f);
         
         Destroy(hitAudio);
     }

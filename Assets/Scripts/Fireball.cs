@@ -27,16 +27,19 @@ public class Fireball : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        Vector3 direction = target.position - transform.position;
-        float distance = speed * Time.deltaTime;
-
-        if(direction.magnitude <= distance)
+        // Otherwise run standard movement and damage calculations
+        else
         {
-            Destroy(gameObject);
-            target.GetComponent<EnemyAI>().TakeDamage(damage);
-        }
+            Vector3 direction = target.position - transform.position;
+            float distance = speed * Time.deltaTime;
 
-        transform.Translate(direction.normalized * distance, Space.World);
+            if(direction.magnitude <= distance)
+            {
+                Destroy(gameObject);
+                target.GetComponent<EnemyAI>().TakeDamage(damage);
+            }
+
+            transform.Translate(direction.normalized * distance, Space.World);
+        }
     }
 }
