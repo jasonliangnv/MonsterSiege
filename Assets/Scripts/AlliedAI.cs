@@ -11,12 +11,14 @@ public class AlliedAI : MonoBehaviour
     public float damage;
     public int cost;
     public bool ranged;
+    public GameObject fireball;
+    public Transform firePoint;
     public Sprite icon;
 
     [SerializeField] private Animator model;
     private float turnSpeed = 0.1f;
     private float timer = 0f;
-    private float delay = 1.33f;
+    private float delay;
 
     Vector3 difference;
     Quaternion rotGoal;
@@ -27,6 +29,11 @@ public class AlliedAI : MonoBehaviour
     void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, 0.25f);
+
+        if(ranged)
+            delay = 1.33f;
+        else
+            delay = 1.33f;
 
         damage += PlayerStats.allyModifiers["attack"];
         range += PlayerStats.allyModifiers["range"];
@@ -56,15 +63,24 @@ public class AlliedAI : MonoBehaviour
             hitAudio = Instantiate(GameObject.Find("HitSound"));
             AudioSource hit = hitAudio.GetComponent<AudioSource>();
             hit.Play();
-            target.GetComponent<EnemyAI>().TakeDamage(damage);
             StartCoroutine(DeleteSound());
+
+            target.GetComponent<EnemyAI>().TakeDamage(damage);
 
             timer += Time.deltaTime;
         }
         else if (target.GetComponent<EnemyAI>().IsDead() == false && timer == 0 && ranged == true)
         {
-            delay = 1.5f;
-            FireProjectile();
+            model.SetTrigger("triggerHit");
+
+            Invoke("FireProjectile", 0.60f);
+
+            hitAudio = Instantiate(GameObject.Find("FireballSound"));
+            AudioSource hit = hitAudio.GetComponent<AudioSource>();
+            hit.Play();
+            StartCoroutine(DeleteSound());
+
+            timer += Time.deltaTime;
         }
         else
         {
@@ -116,12 +132,22 @@ public class AlliedAI : MonoBehaviour
 
     void FireProjectile()
     {
+        GameObject fireballObject = (GameObject)Instantiate(fireball, firePoint.position, firePoint.rotation);
+        Fireball projectile = fireballObject.GetComponent<Fireball>();
 
+        projectile.SetDamage(damage);
+
+        if (projectile != null)
+            projectile.Seek(target);
     }
 
     public IEnumerator DeleteSound()
     {
-        yield return new WaitForSeconds(1.15f);
+        if(ranged)
+            yield return new WaitForSeconds(0.862f);
+        else
+            yield return new WaitForSeconds(1.33f);
+        
         Destroy(hitAudio);
     }
 }

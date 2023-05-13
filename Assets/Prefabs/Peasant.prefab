@@ -1397,6 +1397,9 @@ MonoBehaviour:
   range: 6
   damage: 10
   cost: 5
+  ranged: 0
+  fireball: {fileID: 2206949303969554229, guid: 198b2f7333e74a34b852c76078cc401e, type: 3}
+  firePoint: {fileID: 2723720152616659914}
   icon: {fileID: 21300000, guid: f977569be10c52c43a8c3ffaa2338e02, type: 3}
   model: {fileID: 8299208155895968176}
 --- !u!1 &3512267299450506961
