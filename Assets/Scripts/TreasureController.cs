@@ -18,7 +18,7 @@ public class TreasureController : MonoBehaviour
 
     public void SharperSwords()
     {
-        PlayerStats.allyModifiers["attack"] += 5;
+        PlayerStats.allyModifiers["meleeAttack"] += 5;
         PlayerStats.AddTreasure(gameObject);
     }
 }

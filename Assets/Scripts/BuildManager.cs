@@ -54,8 +54,8 @@ public class BuildManager : MonoBehaviour
             AlliedAI unitStats = unitToBuild.GetComponent<AlliedAI>();
             unitIcon.sprite = unitStats.icon;
             statsText.text = "Unit: " + unitStats.name.ToString() + "\n" +
-                "Attack: " + unitStats.damage.ToString() + "\n" + 
-                "Range: " + unitStats.range.ToString() + "\n" +
+                "Attack: " + (unitStats.damage + PlayerStats.allyModifiers["attack"]).ToString() + "\n" + 
+                "Range: " + (unitStats.range +PlayerStats.allyModifiers["range"]).ToString() + "\n" +
                 "Cost: " + unitStats.cost.ToString();
         }
     }

@@ -21,8 +21,10 @@ public class PlayerStats : MonoBehaviour
 
     public static Dictionary<string, int> allyModifiers = new Dictionary<string, int>()
     {
-        {"attack", 0},
-        {"range", 0 },
+        {"rangedAttack", 0},
+        {"rangedRange", 0 },
+        {"meleeAttack", 0},
+        {"meleeRange", 0},
     };
 
     public static Dictionary<string, int> enemyModifiers = new Dictionary<string, int>()

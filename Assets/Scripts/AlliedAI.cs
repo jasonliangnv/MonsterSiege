@@ -32,8 +32,16 @@ public class AlliedAI : MonoBehaviour
 
         delay = 1.33f;
 
-        damage += PlayerStats.allyModifiers["attack"];
-        range += PlayerStats.allyModifiers["range"];
+        if (ranged)
+        {
+            damage += PlayerStats.allyModifiers["rangedAttack"];
+            range += PlayerStats.allyModifiers["rangedRange"];
+        }
+        else
+        {
+            damage += PlayerStats.allyModifiers["meleeAttack"];
+            range += PlayerStats.allyModifiers["meleeRange"];
+        }
     }
 
     // Update is called once per frame
