@@ -53,10 +53,20 @@ public class BuildManager : MonoBehaviour
         {
             AlliedAI unitStats = unitToBuild.GetComponent<AlliedAI>();
             unitIcon.sprite = unitStats.icon;
-            statsText.text = "Unit: " + unitStats.name.ToString() + "\n" +
-                "Attack: " + (unitStats.damage + PlayerStats.allyModifiers["attack"]).ToString() + "\n" + 
-                "Range: " + (unitStats.range +PlayerStats.allyModifiers["range"]).ToString() + "\n" +
-                "Cost: " + unitStats.cost.ToString();
+            if (unitStats.ranged)
+            {
+                statsText.text = "Unit: " + unitStats.name.ToString() + "\n" +
+                    "Attack: " + (unitStats.damage + PlayerStats.allyModifiers["rangedAttack"]).ToString() + "\n" +
+                    "Range: " + (unitStats.range + PlayerStats.allyModifiers["rangedRange"]).ToString() + "\n" +
+                    "Cost: " + unitStats.cost.ToString();
+            }
+            else
+            {
+                statsText.text = "Unit: " + unitStats.name.ToString() + "\n" +
+                    "Attack: " + (unitStats.damage + PlayerStats.allyModifiers["meleeAttack"]).ToString() + "\n" + 
+                    "Range: " + (unitStats.range +PlayerStats.allyModifiers["meleeRange"]).ToString() + "\n" +
+                    "Cost: " + unitStats.cost.ToString();
+            }
         }
     }
 }
