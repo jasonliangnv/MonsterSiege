@@ -34108,6 +34108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d3b530cfe996be4fb47d9d47eacd434, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  refundUnits: 0
   EnemiesAlive: 0
   waves:
   - enemy: {fileID: 8272943599224061573, guid: 47b41978aba272c47ae5f4a2f7179c61, type: 3}

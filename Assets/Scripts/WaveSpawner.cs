@@ -8,6 +8,8 @@ using TMPro;
 
 public class WaveSpawner : MonoBehaviour
 {
+    public bool refundUnits;
+
     public int EnemiesAlive;
 
     //array of defined wave types to give to wavespawner
@@ -91,6 +93,8 @@ public class WaveSpawner : MonoBehaviour
                     StartCoroutine(LaunchFireworks());
                 }
 
+                RefundUnits(refundUnits);
+
                 Invoke("SelectTreasure", 6);
             }
             else
@@ -134,6 +138,19 @@ public class WaveSpawner : MonoBehaviour
     void ReturnToMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    void RefundUnits(bool refund)
+    {
+        if (refund)
+        {
+            AlliedAI[] units = FindObjectsOfType<AlliedAI>();
+            for(int i = 0; i < units.Length; i++)
+            {
+                PlayerStats.money += units[i].cost;
+                Destroy(units[i].gameObject);
+            }
+        }
     }
 
     public IEnumerator LaunchFireworks()
