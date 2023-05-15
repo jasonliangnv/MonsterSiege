@@ -40,6 +40,11 @@ public class Node : MonoBehaviour
             return;
         }
 
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+
         GameObject unitToBuild = buildManager.GetUnitToBuild();
         int unitCost = unitToBuild.GetComponent<AlliedAI>().cost;
 
