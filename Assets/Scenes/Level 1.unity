@@ -16991,6 +16991,7 @@ MonoBehaviour:
   - {fileID: 2022300574220288125, guid: 1dc942cd48506c847b523fc15f6d02c1, type: 3}
   - {fileID: 620205674220225828, guid: 9812238c16243954e9c2acb9acd016fb, type: 3}
   - {fileID: 4031994118140627155, guid: 465311c4a34bf04438815b203bca933f, type: 3}
+  - {fileID: 7884911830481408894, guid: 976ae8be06eb70c4b853e898f5a03649, type: 3}
   treasure1: {fileID: 0}
   treasure2: {fileID: 0}
   treasure3: {fileID: 0}

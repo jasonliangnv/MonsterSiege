@@ -23,7 +23,7 @@ public class TreasureMenu : MonoBehaviour
         panel = GameObject.Find("Treasures");
         
         // Saves value of our random treasure
-        int temp = Random.Range(0, (treasures.Count - 1));
+        int temp = Random.Range(0, (treasures.Count));
         
         // Saves the treasure and then removes it from the collection
         GameObject selected = treasures[temp];
@@ -34,7 +34,7 @@ public class TreasureMenu : MonoBehaviour
         Instantiate(treasure1, panel.transform);    
 
         // Saves value of our random treasure
-        temp = Random.Range(0, (treasures.Count - 1));
+        temp = Random.Range(0, (treasures.Count));
 
         // Saves the treasure and then removes it from the collection
         selected = treasures[temp];
@@ -45,7 +45,7 @@ public class TreasureMenu : MonoBehaviour
         Instantiate(treasure2, panel.transform);
 
         // Saves value of our random treasure
-        temp = Random.Range(0, (treasures.Count - 1));
+        temp = Random.Range(0, (treasures.Count));
         
         // Saves the treasure and then removes it from the collection
         selected = treasures[temp];

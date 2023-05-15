@@ -38,6 +38,7 @@ public class WaveSpawner : MonoBehaviour
 
     void Start()
     {
+        refundUnits = false;
         EnemiesAlive = 0;
         winTextObject.SetActive(false);
         treasureSelect.SetActive(false);
@@ -93,6 +94,7 @@ public class WaveSpawner : MonoBehaviour
                     StartCoroutine(LaunchFireworks());
                 }
 
+                refundUnits = true;
                 RefundUnits(refundUnits);
 
                 Invoke("SelectTreasure", 6);
@@ -147,9 +149,11 @@ public class WaveSpawner : MonoBehaviour
             AlliedAI[] units = FindObjectsOfType<AlliedAI>();
             for(int i = 0; i < units.Length; i++)
             {
-                PlayerStats.money += units[i].cost;
+                PlayerStats.money += (units[i].cost/2);
                 Destroy(units[i].gameObject);
             }
+
+            Debug.Log(PlayerStats.money);
         }
     }
 

@@ -6,7 +6,7 @@ public class TreasureController : MonoBehaviour
 {
     public void BolsterDefenses()
     {
-        PlayerStats.health += 10;
+        PlayerStats.health += 15;
         PlayerStats.AddTreasure(gameObject);
     }
 
@@ -20,5 +20,11 @@ public class TreasureController : MonoBehaviour
     {
         PlayerStats.allyModifiers["meleeAttack"] += 5;
         PlayerStats.AddTreasure(gameObject);
+    }
+
+    public void BetterFirepower()
+    {
+        PlayerStats.allyModifiers["rangedAttack"] += 5;
+        PlayerStats.AddTreasure(gameObject);        
     }
 }

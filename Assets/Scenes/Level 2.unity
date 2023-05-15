@@ -35212,10 +35212,6 @@ MonoBehaviour:
   EnemiesAlive: 0
   waves:
   - enemy: {fileID: 8272943599224061573, guid: 47b41978aba272c47ae5f4a2f7179c61, type: 3}
-    count: 2
-    rate: 1
-    icon: {fileID: 21300000, guid: 71c79df97269edd4ba461d5fb8eea171, type: 3}
-  - enemy: {fileID: 8272943599224061573, guid: 47b41978aba272c47ae5f4a2f7179c61, type: 3}
     count: 4
     rate: 2
     icon: {fileID: 21300000, guid: 71c79df97269edd4ba461d5fb8eea171, type: 3}
@@ -35223,13 +35219,17 @@ MonoBehaviour:
     count: 6
     rate: 3
     icon: {fileID: 21300000, guid: 71c79df97269edd4ba461d5fb8eea171, type: 3}
-  - enemy: {fileID: 4427376173531245595, guid: b91f2cacb0bef7f4bac8f61b0f00b4c6, type: 3}
-    count: 3
-    rate: 1
-    icon: {fileID: 21300000, guid: ac1e0643a233e9d4381d23a07fc65fd3, type: 3}
   - enemy: {fileID: 8272943599224061573, guid: 47b41978aba272c47ae5f4a2f7179c61, type: 3}
     count: 8
     rate: 4
+    icon: {fileID: 21300000, guid: 71c79df97269edd4ba461d5fb8eea171, type: 3}
+  - enemy: {fileID: 4427376173531245595, guid: b91f2cacb0bef7f4bac8f61b0f00b4c6, type: 3}
+    count: 4
+    rate: 2
+    icon: {fileID: 21300000, guid: ac1e0643a233e9d4381d23a07fc65fd3, type: 3}
+  - enemy: {fileID: 8272943599224061573, guid: 47b41978aba272c47ae5f4a2f7179c61, type: 3}
+    count: 10
+    rate: 5
     icon: {fileID: 21300000, guid: 71c79df97269edd4ba461d5fb8eea171, type: 3}
   - enemy: {fileID: 4427376173531245595, guid: b91f2cacb0bef7f4bac8f61b0f00b4c6, type: 3}
     count: 8
@@ -43015,6 +43015,7 @@ MonoBehaviour:
   - {fileID: 2022300574220288125, guid: 1dc942cd48506c847b523fc15f6d02c1, type: 3}
   - {fileID: 620205674220225828, guid: 9812238c16243954e9c2acb9acd016fb, type: 3}
   - {fileID: 4031994118140627155, guid: 465311c4a34bf04438815b203bca933f, type: 3}
+  - {fileID: 7884911830481408894, guid: 976ae8be06eb70c4b853e898f5a03649, type: 3}
   treasure1: {fileID: 0}
   treasure2: {fileID: 0}
   treasure3: {fileID: 0}
